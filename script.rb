@@ -10,14 +10,14 @@ $education_levels = [
 $classifications = [
   'Politica',
   'Farandula',
-  'Cientifica',
+  'Cientifica', 
   'Economica'
 ]
 cities = ['Barranquilla', 'Santa Marta', 'Cartagena']
 $ages = [(14..23), (24..35), (36..45), (46..60)]
 
 def toss_coin(yes_value, no_value, yes_percentage)
-  coin = Faker::Number.between(from: 1, to: 100)
+  coin = Faker::Number.between(from: 1, to: 100 - yes_percentage)
   coin > yes_percentage ? yes_value : no_value
 end
 
@@ -49,13 +49,13 @@ def generate_line(city, age_range)
     )
   end
   if age.between?(14, 21) || age.between?(46, 60)
-    if toss_coin(true, false, 82) 
+    if !toss_coin(true, false, 82) 
       fake_news_count = Faker::Number.between(from: 4, to: 6)
     else
       fake_news_count = Faker::Number.between(from: 0, to: 1)
     end
   else
-    if toss_coin(true, false, 85) 
+    if !toss_coin(true, false, 85) 
       fake_news_count = Faker::Number.between(from: 0, to: 1)
     else
       fake_news_count = Faker::Number.between(from:4, to: 6)
