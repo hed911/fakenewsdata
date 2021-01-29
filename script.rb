@@ -49,13 +49,13 @@ def generate_line(city, age_range)
     )
   end
   if age.between?(14, 21) || age.between?(46, 60)
-    if !toss_coin(true, false, 82) 
+    if toss_coin(true, false, 82) 
       fake_news_count = Faker::Number.between(from: 4, to: 6)
     else
       fake_news_count = Faker::Number.between(from: 0, to: 1)
     end
   else
-    if !toss_coin(true, false, 85) 
+    if toss_coin(true, false, 85) 
       fake_news_count = Faker::Number.between(from: 0, to: 1)
     else
       fake_news_count = Faker::Number.between(from:4, to: 6)
